@@ -6,7 +6,7 @@ export async function postUser(req: Request, res: Response) {
 
   const data = await userService.createUser(user);
 
-  res.status(200).json(data);
+  res.status(201).json(data);
 }
 
 export async function getUserById(req: Request, res: Response) {
