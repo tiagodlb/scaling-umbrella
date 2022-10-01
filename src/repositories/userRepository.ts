@@ -8,3 +8,9 @@ export async function getUserById(id: string): Promise<Users | null> {
     where: { id },
   });
 }
+
+export async function getUserByEmail(email: string): Promise<Users | null> {
+  return await prisma.users.findUnique({
+    where: { email },
+  });
+}
