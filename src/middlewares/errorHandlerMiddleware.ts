@@ -3,13 +3,13 @@ import {
   AppError,
   errorTypeToStatusCode,
   isAppError,
-} from "../utils/errorUtils";
+} from "../utils/errorUtils.js";
 
 export default function errorHandlerMiddleware(
   err: Error | AppError,
-  req: Request,
+  _req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ) {
   if (isAppError(err)) {
     return res.status(errorTypeToStatusCode(err.type)).send(err.message);

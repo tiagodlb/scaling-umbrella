@@ -15,8 +15,12 @@ export async function getUserByEmail(email: string): Promise<Users | null> {
   });
 }
 
-export async function createUser(data: ICreateUser): Promise<Users> {
+export async function createUser({
+  name,
+  email,
+  password,
+}: ICreateUser): Promise<Users> {
   return await prisma.users.create({
-    data,
+    data: { name, email, password },
   });
 }
