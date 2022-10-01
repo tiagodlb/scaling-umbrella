@@ -2,11 +2,19 @@ import { ICreateUser } from "../repositories/userRepository.js";
 import { hash } from "bcrypt";
 import * as userRepository from "./../repositories/userRepository.js";
 import { conflictError, notFoundError } from "../utils/errorUtils.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 async function getUserById(id: string) {
   const user = await userRepository.getUserById(id);
-  if (!user) return notFoundError("User does not exist");
-  return user;
+  if (!user) return notFoundError("User not found");
+  const userWithoutPassword = {
+    id: user.id,
+    name: user.name,
+    email: user.email
+  }
+  return userWithoutPassword;
 }
 
 async function createUser(user: ICreateUser) {
@@ -17,7 +25,6 @@ async function createUser(user: ICreateUser) {
       "Email already in use, please consider using another."
     );
   const hashPassword = await hash(user.password, +SALT);
-
   const { password, ...createdUser } = await userRepository.createUser({
     ...user,
     password: hashPassword,
