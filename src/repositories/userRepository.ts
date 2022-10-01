@@ -14,3 +14,9 @@ export async function getUserByEmail(email: string): Promise<Users | null> {
     where: { email },
   });
 }
+
+export async function createUser(data: ICreateUser): Promise<Users> {
+  return await prisma.users.create({
+    data,
+  });
+}
