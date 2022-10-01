@@ -8,3 +8,11 @@ export async function postUser(req: Request, res: Response) {
 
   res.status(200).json(data);
 }
+
+export async function getUserById(req: Request, res: Response) {
+  const { id } = req.params;
+
+  const data = await userService.getUserById(id);
+
+  res.status(200).json(data);
+}
