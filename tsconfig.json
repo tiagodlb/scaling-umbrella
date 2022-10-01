@@ -7,10 +7,16 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "outDir": "dist",
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "alwaysStrict": true,
+    "useUnknownInCatchVariables": false,
+    "isolatedModules": false,
     "skipLibCheck": true
-  }
+  },
+  "ts-node": {
+    "esm": true
+}
 }
