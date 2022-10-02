@@ -9,8 +9,18 @@ export async function getSurveyById(id: string): Promise<Surveys | null> {
   });
 }
 
-export async function getSurveyByUser(userId: string): Promise<Surveys[]>{
-    return await prisma.surveys.findMany({
-        where: { id_user: userId }
-    })
+export async function getSurveyByUser(userId: string): Promise<Surveys[]> {
+  return await prisma.surveys.findMany({
+    where: { id_user: userId },
+  });
+}
+
+export async function createSurvey({
+  id_user,
+  name,
+  description,
+}: ICreateSurvey): Promise<Surveys> {
+  return await prisma.surveys.create({
+    data: { id_user, name, description },
+  });
 }
