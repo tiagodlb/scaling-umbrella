@@ -28,13 +28,17 @@ export function badRequestError(message: string): AppError {
 }
 
 export function conflictError(message: string): AppError {
-  return { type: "bad_request", message };
+  return { type: "conflict", message };
 }
 
 export function notFoundError(message: string): AppError {
-  return { type: "unauthorized", message };
+  return { type: "not_found", message };
 }
 
 export function wrongSchemaError(message: string): AppError {
+  return { type: "unauthorized", message };
+}
+
+export function unauthorizedError(message: string): AppError {
   return { type: "wrong_schema", message };
 }
