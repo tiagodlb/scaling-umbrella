@@ -34,7 +34,9 @@ async function updateSurvey(data: TUpdateSurvey, id: string) {
   return updatedSurvey;
 }
 
-async function deleteSurvey(id: string) {
+async function deleteSurvey(id_user: string,id: string) {
+  const user = await surveyRepository.getSurveyByUser(id_user);
+  if (!user) return notFoundError("User does not exist");
   const survey = await surveyRepository.getSurveyById(id);
   if (!survey) return notFoundError("Survey does not exist");
   await surveyRepository.deleteSurvey(id);
