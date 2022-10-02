@@ -8,3 +8,9 @@ export async function getSurveyById(id: string): Promise<Surveys | null> {
     where: { id },
   });
 }
+
+export async function getSurveyByUser(userId: string): Promise<Surveys[]>{
+    return await prisma.surveys.findMany({
+        where: { id_user: userId }
+    })
+}
