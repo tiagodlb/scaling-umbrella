@@ -36,7 +36,13 @@ model CloudServices {
   id        String  @id @default(uuid())
   id_survey String
   survey    Surveys @relation(fields: [id_survey], references: [id])
-  name      String  @unique
+  name      CloudServiceType  @unique
 
   @@map("cloudServices")
+}
+
+enum CloudServiceType {
+  AWS
+  GoogleCloud
+  Azure
 }
