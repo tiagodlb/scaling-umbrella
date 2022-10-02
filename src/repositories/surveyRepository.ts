@@ -35,3 +35,9 @@ export async function updateSurvey(
     data: survey,
   });
 }
+
+export async function deleteSurvey(id: string) {
+  return await prisma.surveys.delete({
+    where: { id },
+  });
+}
