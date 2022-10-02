@@ -1,7 +1,7 @@
 import { Surveys } from "@prisma/client";
 import { prisma } from "../database/prisma.js";
 
-export type ICreateSurvey = Omit<Surveys, "id">;
+export type TCreateSurvey = Omit<Surveys, "id">;
 
 export async function getSurveyById(id: string): Promise<Surveys | null> {
   return await prisma.surveys.findUnique({
@@ -19,7 +19,7 @@ export async function createSurvey({
   id_user,
   name,
   description,
-}: ICreateSurvey): Promise<Surveys> {
+}: TCreateSurvey): Promise<Surveys> {
   return await prisma.surveys.create({
     data: { id_user, name, description },
   });
