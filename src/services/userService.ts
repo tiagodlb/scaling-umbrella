@@ -12,8 +12,8 @@ async function getUserById(id: string) {
   const userWithoutPassword = {
     id: user.id,
     name: user.name,
-    email: user.email
-  }
+    email: user.email,
+  };
   return userWithoutPassword;
 }
 
