@@ -28,17 +28,29 @@ model Surveys {
   description   String
   created_at    DateTime        @default(now())
   CloudServices CloudServices[]
+  Sku           Sku[]
 
   @@map("surveys")
 }
 
 model CloudServices {
-  id        String  @id @default(uuid())
+  id        String           @id @default(uuid())
   id_survey String
-  survey    Surveys @relation(fields: [id_survey], references: [id])
-  name      CloudServiceType  @unique
+  survey    Surveys          @relation(fields: [id_survey], references: [id])
+  name      CloudServiceType @unique
 
   @@map("cloudServices")
+}
+
+model Sku {
+  id           String  @id @default(uuid())
+  id_survey    String
+  survey       Surveys @relation(fields: [id_survey], references: [id])
+  sku          String  @unique
+  displayName  String  @unique
+  price        Int
+  currencyCode String
+  unit         String
 }
 
 enum CloudServiceType {
