@@ -13,7 +13,7 @@ async function getAllSurveys(id_user: string) {
 
 async function getSurveyById(id: string) {
   const survey = await surveyRepository.getSurveyById(id);
-  if (survey) return notFoundError("Survey not found");
+  if (!survey) return notFoundError("Survey not found");
   return survey;
 }
 
@@ -26,7 +26,7 @@ async function updateSurvey(data: TUpdateSurvey, id: string) {
   const survey = await surveyRepository.getSurveyById(id);
   if (!survey) return notFoundError("Survey does not exist");
   const updatedSurvey = await surveyRepository.updateSurvey(data, id);
-  if (!survey)
+  if (!updatedSurvey)
     return notFoundError(
       "Something went wrong when trying to update the survey"
     );
@@ -34,13 +34,18 @@ async function updateSurvey(data: TUpdateSurvey, id: string) {
   return updatedSurvey;
 }
 
-async function deleteSurvey(id_user: string,id: string) {
-  const user = await surveyRepository.getSurveyByUser(id_user);
-  if (!user) return notFoundError("User does not exist");
+async function deleteSurvey(id: string) {
   const survey = await surveyRepository.getSurveyById(id);
   if (!survey) return notFoundError("Survey does not exist");
   await surveyRepository.deleteSurvey(id);
+
   return;
 }
 
-export { updateSurvey, createSurvey, getSurveyById, getAllSurveys, deleteSurvey };
+export {
+  updateSurvey,
+  createSurvey,
+  getSurveyById,
+  getAllSurveys,
+  deleteSurvey,
+};

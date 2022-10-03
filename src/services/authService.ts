@@ -1,6 +1,6 @@
 import { compare } from "bcrypt";
 import dotenv from "dotenv";
-import { sign } from "jsonwebtoken";
+import pkg from "jsonwebtoken";
 import { getUserByEmail } from "../repositories/userRepository.js";
 import { unauthorizedError } from "../utils/errorUtils.js";
 
@@ -12,6 +12,7 @@ interface IAuthenticate {
 }
 
 export async function authUser({ email, password }: IAuthenticate) {
+  const { sign } = pkg;
   const user = await getUserByEmail(email);
   if (!user) return unauthorizedError("Invalid email or password");
   const passwordMatch = await compare(password, user.password);
@@ -19,8 +20,9 @@ export async function authUser({ email, password }: IAuthenticate) {
   const KEY: any = process.env.JWT_SECRET;
   const token = sign({ name: user.name }, KEY, {
     subject: user.id,
-    expiresIn: "id",
+    expiresIn: "1d",
   });
+  console.log("??");
 
   return token;
 }
