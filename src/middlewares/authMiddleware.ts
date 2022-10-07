@@ -21,7 +21,6 @@ export async function authMiddleware(
   try {
     const KEY: any = process.env.JWT_SECRET;
     const { sub } = verify(token, KEY) as IPayload;
-
     res.locals.id_user = sub;
     return next();
   } catch (error) {
