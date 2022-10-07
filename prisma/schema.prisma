@@ -46,11 +46,13 @@ model Sku {
   id           String  @id @default(uuid())
   id_survey    String
   survey       Surveys @relation(fields: [id_survey], references: [id])
-  sku          String  @unique
-  displayName  String  @unique
+  sku          String 
+  displayName  String  
   price        Int
   currencyCode String
   unit         String
+
+  @@map("sku")
 }
 
 enum CloudServiceType {
