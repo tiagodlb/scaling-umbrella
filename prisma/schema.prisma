@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Users {
@@ -46,8 +47,8 @@ model Sku {
   id           String  @id @default(uuid())
   id_survey    String
   survey       Surveys @relation(fields: [id_survey], references: [id])
-  sku          String 
-  displayName  String  
+  sku          String
+  displayName  String
   price        Int
   currencyCode String
   unit         String
