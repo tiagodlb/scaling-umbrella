@@ -1,22 +1,11 @@
 {
   "compilerOptions": {
     "target": "es2016",
-    "moduleDetection": "auto",
-    "module": "ES6",
-    "moduleResolution": "node",
+    "module": "commonjs",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
     "outDir": "dist",
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "alwaysStrict": true,
-    "useUnknownInCatchVariables": false,
-    "isolatedModules": false,
-    "skipLibCheck": true
-  },
-  "ts-node": {
-    "esm": true
-}
+    "forceConsistentCasingInFileNames": true,
+    "strict": false,
+    "skipLibCheck": true,
+  }
 }
