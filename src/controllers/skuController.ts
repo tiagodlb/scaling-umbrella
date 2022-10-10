@@ -5,7 +5,7 @@ export async function getSkuById(req: Request, res: Response) {
   const { id } = req.params;
 
   const data = await skuService.getSkuById(id);
-
+ 
   res.json(data);
 }
 
