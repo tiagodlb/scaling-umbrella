@@ -5,7 +5,7 @@ import { notFoundError } from "../utils/errorUtils";
 async function getSkuById(id: string) {
   const sku = await skuRepository.getSkuById(id);
   if (!sku) return notFoundError("Sku not found");
-  return sku; 
+  return sku;  
 }
 
 async function createSku(data: TCreateSku) {
