@@ -1,7 +1,7 @@
-import { ICreateUser } from "../repositories/userRepository.js";
+import { ICreateUser } from "../repositories/userRepository";
 import { hash } from "bcrypt";
-import * as userRepository from "./../repositories/userRepository.js";
-import { conflictError, notFoundError } from "../utils/errorUtils.js";
+import * as userRepository from "./../repositories/userRepository";
+import { conflictError, notFoundError } from "../utils/errorUtils";
 import dotenv from "dotenv";
 
 dotenv.config();
