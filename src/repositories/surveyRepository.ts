@@ -1,5 +1,5 @@
 import { Surveys } from "@prisma/client";
-import { prisma } from "../database/prisma.js";
+import { prisma } from "../database/prisma";
 
 export type TCreateSurvey = Omit<Surveys, "id" | "created_at">;
 export type TUpdateSurvey = Partial<Surveys>;

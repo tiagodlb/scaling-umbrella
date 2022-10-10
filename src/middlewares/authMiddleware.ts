@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import { NextFunction, Request, Response } from "express";
 import pkg from "jsonwebtoken";
-import { notFoundError, unauthorizedError } from "../utils/errorUtils.js";
+import { notFoundError, unauthorizedError } from "../utils/errorUtils";
 
 dotenv.config();
 
