@@ -5,10 +5,10 @@ import {
   getSurveys,
   postSurvey,
   putSurvey,
-} from "../controllers/surveyController";
-import { authMiddleware } from "../middlewares/authMiddleware";
-import { validateSchemaMiddleware } from "../middlewares/validateSchemaMiddleware";
-import { surveySchema } from "../schemas/surveySchema";
+} from "../controllers/surveyController.js";
+import { authMiddleware } from "../middlewares/authMiddleware.js";
+import { validateSchemaMiddleware } from "../middlewares/validateSchemaMiddleware.js";
+import { surveySchema } from "../schemas/surveySchema.js";
 
 const surveyRouter = Router();
 

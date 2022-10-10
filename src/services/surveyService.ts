@@ -1,9 +1,9 @@
-import * as surveyRepository from "../repositories/surveyRepository";
+import * as surveyRepository from "../repositories/surveyRepository.js";
 import {
   TCreateSurvey,
   TUpdateSurvey,
-} from "../repositories/surveyRepository";
-import { notFoundError } from "../utils/errorUtils";
+} from "../repositories/surveyRepository.js";
+import { notFoundError } from "../utils/errorUtils.js";
 
 async function getAllSurveys(id_user: string) {
   const surveys = await surveyRepository.getSurveyByUser(id_user);

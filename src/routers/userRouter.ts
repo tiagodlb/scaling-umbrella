@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { getUserById, postUser } from "../controllers/userController";
-import { validateSchemaMiddleware } from "../middlewares/validateSchemaMiddleware";
-import { userCreateSchema } from "../schemas/userSchema";
+import { getUserById, postUser } from "../controllers/userController.js";
+import { validateSchemaMiddleware } from "../middlewares/validateSchemaMiddleware.js";
+import { userCreateSchema } from "../schemas/userSchema.js";
 
 const userRouter = Router();
 

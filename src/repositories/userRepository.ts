@@ -1,5 +1,5 @@
 import { Users } from "@prisma/client";
-import { prisma } from "../database/prisma";
+import { prisma } from "../database/prisma.js";
 
 export type ICreateUser = Omit<Users, "id">;
 

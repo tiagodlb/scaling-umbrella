@@ -1,8 +1,8 @@
 import { compare } from "bcrypt";
 import dotenv from "dotenv";
 import pkg from "jsonwebtoken";
-import { getUserByEmail } from "../repositories/userRepository";
-import { unauthorizedError } from "../utils/errorUtils";
+import { getUserByEmail } from "../repositories/userRepository.js";
+import { unauthorizedError } from "../utils/errorUtils.js";
 
 dotenv.config();
 

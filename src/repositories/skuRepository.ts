@@ -1,5 +1,5 @@
 import { Sku } from "@prisma/client";
-import { prisma } from "../database/prisma";
+import { prisma } from "../database/prisma.js";
 
 export type TCreateSku = Omit<Sku, "id">;
 export type TUpdateSku = Partial<Sku>;

@@ -4,10 +4,10 @@ import {
   getSkuById,
   postSku,
   putSku,
-} from "../controllers/skuController";
-import { authMiddleware } from "../middlewares/authMiddleware";
-import { validateSchemaMiddleware } from "../middlewares/validateSchemaMiddleware";
-import { skuSchema } from "../schemas/skuSchema";
+} from "../controllers/skuController.js";
+import { authMiddleware } from "../middlewares/authMiddleware.js";
+import { validateSchemaMiddleware } from "../middlewares/validateSchemaMiddleware.js";
+import { skuSchema } from "../schemas/skuSchema.js";
 
 const skuRouter = Router();
 

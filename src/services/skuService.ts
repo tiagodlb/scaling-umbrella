@@ -1,6 +1,6 @@
 import { TCreateSku } from "../repositories/skuRepository.js";
-import * as skuRepository from "../repositories/skuRepository";
-import { notFoundError } from "../utils/errorUtils";
+import * as skuRepository from "../repositories/skuRepository.js";
+import { notFoundError } from "../utils/errorUtils.js";
 
 async function getSkuById(id: string) {
   const sku = await skuRepository.getSkuById(id);
