@@ -1,11 +1,11 @@
-import { TCreateSku } from "../repositories/skuRepository.js";
-import * as skuRepository from "../repositories/skuRepository.js";
-import { notFoundError } from "../utils/errorUtils.js";
+import { TCreateSku } from "../repositories/sku-repository.js";
+import * as skuRepository from "../repositories/sku-repository.js";
+import { notFoundError } from "../errors/not-found-error.js";
 
 async function getSkuById(id: string) {
   const sku = await skuRepository.getSkuById(id);
-  if (!sku) return notFoundError("Sku not found");
-  return sku;  
+  if (!sku) throw notFoundError();
+  return sku;
 }
 
 async function createSku(data: TCreateSku) {
@@ -15,19 +15,18 @@ async function createSku(data: TCreateSku) {
 
 async function updateSku(data: skuRepository.TUpdateSku, id: string) {
   const sku = await skuRepository.getSkuById(id);
-  if (!sku) return notFoundError("Sku does not exist");
-  const updatedSku= await skuRepository.updateSku(data, id);
-  if (!updatedSku)
-    return notFoundError(
-      "Something went wrong when trying to update the Sku"
-    );
+  if (!sku) throw notFoundError();
+  const updatedSku = await skuRepository.updateSku(data, id);
+  if (!updatedSku){
+    throw notFoundError();
+  }
 
   return updatedSku;
 }
 
 async function deleteSku(id: string) {
   const sku = await skuRepository.getSkuById(id);
-  if (!sku) return notFoundError("Sku not found");
+  if (!sku) throw notFoundError();
   await skuRepository.deleteSku(id);
 
   return;

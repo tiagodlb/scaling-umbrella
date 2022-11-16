@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as skuService from "../services/skuService.js";
+import * as skuService from "../services/sku-service.js";
 
 export async function getSkuById(req: Request, res: Response) {
   const { id } = req.params;

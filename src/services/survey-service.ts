@@ -1,19 +1,19 @@
-import * as surveyRepository from "../repositories/surveyRepository.js";
+import { notFoundError } from "../errors/not-found-error.js";
+import * as surveyRepository from "../repositories/survey-repository.js";
 import {
   TCreateSurvey,
   TUpdateSurvey,
-} from "../repositories/surveyRepository.js";
-import { notFoundError } from "../utils/errorUtils.js";
+} from "../repositories/survey-repository.js";
 
 async function getAllSurveys(id_user: string) {
   const surveys = await surveyRepository.getSurveyByUser(id_user);
-  if (!surveys) return notFoundError("There is no survey");
+  if (!surveys) throw notFoundError();
   return surveys;
 }
 
 async function getSurveyById(id: string) {
   const survey = await surveyRepository.getSurveyById(id);
-  if (!survey) return notFoundError("Survey not found");
+  if (!survey) throw notFoundError();
   return survey;
 }
 
@@ -24,19 +24,19 @@ async function createSurvey(data: TCreateSurvey) {
 
 async function updateSurvey(data: TUpdateSurvey, id: string) {
   const survey = await surveyRepository.getSurveyById(id);
-  if (!survey) return notFoundError("Survey does not exist");
+  if (!survey) throw notFoundError();
   const updatedSurvey = await surveyRepository.updateSurvey(data, id);
-  if (!updatedSurvey)
-    return notFoundError(
-      "Something went wrong when trying to update the survey"
-    );
+  if (!updatedSurvey) {
+    throw notFoundError();
+
+  }
 
   return updatedSurvey;
 }
 
 async function deleteSurvey(id: string) {
   const survey = await surveyRepository.getSurveyById(id);
-  if (!survey) return notFoundError("Survey does not exist");
+  if (!survey) throw notFoundError();
   await surveyRepository.deleteSurvey(id);
 
   return;

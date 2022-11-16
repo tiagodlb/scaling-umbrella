@@ -1,9 +1,14 @@
 import dotenv from 'dotenv';
-import app from './app';
+import app, { init } from './app';
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Running on port ${PORT}`);
+init().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Running on port ${PORT}`);
+  });
+}).catch((e) => {
+  console.warn("Something went wrong");
+  console.log(e);
 });

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as authService from "../services/authService";
+import * as authService from "../services/auth-service";
 
 export async function postAuthenticate(req: Request, res: Response) {
   const user = req.body;
