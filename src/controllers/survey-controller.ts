@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as surveyService from "../services/surveyService.js";
+import * as surveyService from "../services/survey-service.js";
 
 export async function getSurveys(req: Request, res: Response) {
   const { id_user } = res.locals;
