@@ -4,18 +4,18 @@ import {
   getSkuById,
   postSku,
   putSku,
-} from "../controllers/skuController.js";
-import { authMiddleware } from "../middlewares/authMiddleware.js";
-import { validateSchemaMiddleware } from "../middlewares/validateSchemaMiddleware.js";
+} from "../controllers/sku-controller.js";
+import { authenticateToken } from "../middlewares/auth-middleware.js";
+import { validateBody,  } from "../middlewares/validate-schema-middleware.js";
 import { skuSchema } from "../schemas/skuSchema.js";
 
 const skuRouter = Router();
 
-skuRouter.use(authMiddleware);
+skuRouter.all('/*', authenticateToken);
 
 skuRouter.get("/skus/:id", getSkuById);
-skuRouter.post("/skus/:id_survey", validateSchemaMiddleware(skuSchema), postSku);
-skuRouter.put("/skus/:id", validateSchemaMiddleware(skuSchema), putSku);
+skuRouter.post("/skus/:id_survey", validateBody(skuSchema), postSku);
+skuRouter.put("/skus/:id", validateBody(skuSchema), putSku);
 skuRouter.delete("/skus/:id", deleteSku);
 
 export default skuRouter;

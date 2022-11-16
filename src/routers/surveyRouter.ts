@@ -5,25 +5,25 @@ import {
   getSurveys,
   postSurvey,
   putSurvey,
-} from "../controllers/surveyController.js";
-import { authMiddleware } from "../middlewares/authMiddleware.js";
-import { validateSchemaMiddleware } from "../middlewares/validateSchemaMiddleware.js";
+} from "../controllers/survey-controller.js";
+import { authenticateToken } from "../middlewares/auth-middleware.js";
+import { validateBody } from "../middlewares/validate-schema-middleware.js";
 import { surveySchema } from "../schemas/surveySchema.js";
 
 const surveyRouter = Router();
 
-surveyRouter.use(authMiddleware);
+surveyRouter.all('/*', authenticateToken);
 
 surveyRouter.get("/surveys", getSurveys);
 surveyRouter.get("/surveys/:id", getSurveyById);
 surveyRouter.post(
   "/surveys",
-  validateSchemaMiddleware(surveySchema),
+  validateBody(surveySchema),
   postSurvey
 );
 surveyRouter.put(
   "/surveys/:id",
-  validateSchemaMiddleware(surveySchema),
+  validateBody(surveySchema),
   putSurvey
 );
 surveyRouter.delete("/surveys/:id", deleteSurvey);
