@@ -7,7 +7,7 @@ import {
 } from "../controllers/sku-controller.js";
 import { authenticateToken } from "../middlewares/auth-middleware.js";
 import { validateBody,  } from "../middlewares/validate-schema-middleware.js";
-import { skuSchema } from "../schemas/skuSchema.js";
+import { skuSchema } from "../schemas/sku-schema.js";
 
 const skuRouter = Router();
 

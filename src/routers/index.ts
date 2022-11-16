@@ -1,8 +1,8 @@
 import { Router } from "express";
-import authRouter from "./authRouter";
-import skuRouter from "./skuRouter";
-import surveyRouter from "./surveyRouter";
-import userRouter from "./userRouter";
+import authRouter from "./auth-router";
+import skuRouter from "./sku-router";
+import surveyRouter from "./survey-router";
+import userRouter from "./user-router";
 
 const router = Router();
 

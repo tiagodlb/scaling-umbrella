@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { postAuthenticate } from "../controllers/auth-controller";
 import { validateBody } from "../middlewares/validate-schema-middleware";
-import { authSchema } from "../schemas/authSchema";
+import { authSchema } from "../schemas/auth-schema";
 
 const authRouter = Router();
 

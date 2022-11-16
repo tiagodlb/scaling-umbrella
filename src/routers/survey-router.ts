@@ -8,7 +8,7 @@ import {
 } from "../controllers/survey-controller.js";
 import { authenticateToken } from "../middlewares/auth-middleware.js";
 import { validateBody } from "../middlewares/validate-schema-middleware.js";
-import { surveySchema } from "../schemas/surveySchema.js";
+import { surveySchema } from "../schemas/survey-schema.js";
 
 const surveyRouter = Router();
 
